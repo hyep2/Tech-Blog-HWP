@@ -2,9 +2,30 @@ const router = require ('express').Router()
 const bcrypt = require('bcrypt')
 const {User} = require('../models')
 
+//registering route
+router.post('/register', async({body,session},res)=> {
+  try {
+    const newUser = await User.create( {
+      username: body.username,
+      password: body.password
+    })
+
+  
+    session.save( () => {
+      session.id = newUser.id
+      session.username = newUser.username
+      session.loggedIn = true
+
+      res.json(newUser)
+    })
+
+  } catch (error) {
+    res.json({error})
+  }
+})
 
 //logging in route
-router.post('/login', async({body}, res => {
+router.post('/login', async({body}, res) => {
   try {
     //search db for user with the provided email
     const dbUser = await User.findOne({where: {email: body.email}})
@@ -31,6 +52,13 @@ router.post('/login', async({body}, res => {
   } catch (error) {
     res.json({error})
   }
-}))
+})
+
+//logging out route
+
+router.post('/logout', (req,res)=>{
+
+})
+
 
 module.exports = router

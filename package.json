@@ -20,6 +20,7 @@
   "homepage": "https://github.com/hyep2/Tech-Blog-HWP#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.19.0"
   }
