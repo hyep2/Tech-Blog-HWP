@@ -11,6 +11,7 @@ app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//EXPRESS-SESSION MIDDLEWARE
 const sess = {
   secret: "Super secret secret",
   resave: false,
