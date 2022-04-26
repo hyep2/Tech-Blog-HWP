@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const { Post } = require('../models')
-const withAuth = require('../utils/auth')
+const { Post, User } = require('../models')
+const passport = require('passport')
 
 //GET ALL POSTS
+//
 router.get('/', async(req,res)=> {
   try {
     let posts = await Post.findAll({})
