@@ -3,8 +3,8 @@ const { Post, User } = require('../models')
 const passport = require('passport')
 
 //GET ALL POSTS
-//
-router.get('/', async(req,res)=> {
+//jwt means that we're going to show our badge/jwt everytime we want to get all the posts
+router.get('/', passport.authenticate('jwt'), async(req,res)=> {
   try {
     let posts = await Post.findAll({})
     res.json(posts)
