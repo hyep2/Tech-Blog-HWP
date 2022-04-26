@@ -6,7 +6,7 @@ const { join } = require("path");
 
 const app = express();
 
-//MIDDLEWARE
+//MIDDLEWARE (should always be there in server.js)
 app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
