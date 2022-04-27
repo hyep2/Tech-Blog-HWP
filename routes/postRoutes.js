@@ -4,7 +4,7 @@ const passport = require('passport')
 
 //GET ALL POSTS
 //jwt means that we're going to show our badge/jwt everytime we want to get all the posts
-router.get('/posts', passport.authenticate('jwt'), async(req,res)=> {
+router.get('/posts', async(req,res)=> {
   try {
     let posts = await Post.findAll({include:[User]})
     res.json(posts)
@@ -22,6 +22,11 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
     res.json({ error })
   }
 })
+
+
+
+
+
 
 //CREATE A POST
 //this autthenticate ensures that when u make a post, we want to authenticate that ur logged in and u do so by looking at local storage where the badge is stored

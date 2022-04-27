@@ -40,7 +40,8 @@
     <h1 class="app-title"><a href="/">Dashboard</a></h1>
   </header>
 
-  <h6>To create a post, fill in the form below. After you submit it, the post will appear in the home page.</h6>
+  <h5>To create a post, fill in the form below. After you submit it, the post will appear in the home page.</h5>
+  <h6>**must be logged in</h6>
   <div class="col-auto">
     <form class="form-floating">
       <input class="form-control" id="title">
@@ -54,9 +55,10 @@
     <br>
     <button type="button" class="btn btn-info" id="submit">Add new post</button>
     <br>
-    <br>
-
-    
+    <hr>
+    <h3>My Posts:</h3>
+    <h6>**might need to refresh page to display posts that were just added</h6>
+    <div id="userPosts"></div>
   </div>
 
 

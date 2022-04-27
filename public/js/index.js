@@ -2,11 +2,7 @@
 
 
 //getting the posts and display them
-axios.get('/api/posts', {
-  headers: {
-    'Authorization': `Bearer ${localStorage.getItem('badge')}`
-  }
-})
+axios.get('/api/posts')
   .then(res => {
     console.log(res) //array of objects
     //want to put the posts on the page
@@ -96,3 +92,9 @@ document.addEventListener('click', event => {
 
 
 
+function logout() {
+  localStorage.setItem('badge', null)
+  window.location = 'signup.html'
+}
+
+document.getElementById("logout").addEventListener("click", logout);

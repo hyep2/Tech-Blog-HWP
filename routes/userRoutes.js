@@ -1,5 +1,5 @@
 const router = require ('express').Router()
-const { User } = require('../models')
+const { User , Post} = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
@@ -24,8 +24,21 @@ router.post('/login', ({body},res)=> {
   })
 })
 
+//GET USER'S POSTS
+router.get('/userPosts', passport.authenticate('jwt'), (req, res) => {
+  res.json(req.user)
+})
 
-//LOGOUT ROUTE
-router.post('/logout', )
+// TESTING
+router.get('/posts/', passport.authenticate('jwt'), async (req, res) => {
+  try {
+    
+    let post = await Post.findAll({ where: { userId: req.user.id }, include: [User] })
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
+  }
+})
+
 
 module.exports = router
