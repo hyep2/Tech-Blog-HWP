@@ -1,0 +1,18 @@
+.card-header {
+  color:blue;
+  font-weight: bold;
+}
+
+h5{
+  font-weight: bold;
+  
+}
+
+.bigcard {
+  width: 500px;
+
+}
+
+#posts {
+  align-items: center;
+}

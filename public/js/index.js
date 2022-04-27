@@ -14,7 +14,7 @@ axios.get('/api/posts', {
     posts.forEach(post => {
       document.getElementById('posts').innerHTML +=
         `
-        <div class="card text-center">
+        <div class="card text-center bigcard">
           <div class="card-header">
             Post by ${post.User.username}
           </div>
