@@ -52,6 +52,23 @@ axios.get('/user/posts', {
     })
   })
 
+//delete post
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('delete')) {
+
+    let postId = event.target.dataset.post
+
+    axios.delete(`/api/posts/${postId}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('badge')}`
+      }
+    }
+    )
+      .then(res => {
+        console.log(res)
+      })
+  }
+})
 
 function logout() {
   localStorage.setItem('badge', null)

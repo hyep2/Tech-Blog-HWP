@@ -24,7 +24,15 @@ router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
 })
 
 
-
+//DELETE A POST
+router.delete('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
+  try {
+    let post = await Post.destroy({ where: { id: req.params.id }})
+    res.json({message: 'post deleted'})
+  } catch (error) {
+    res.json({ error })
+  }
+})
 
 
 
