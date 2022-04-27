@@ -29,7 +29,7 @@ axios.get('/api/posts', {
               <button class="addcomment" data-post="${post.id}">Add comments</button>
               <hr>
               <button class="post" data-post="${post.id}">See comments</button>
-              <div id='comments'></div>
+              <div id='comments ${post.id}'></div>
           </div>
           <div class="card-footer text-muted">
              Posted at: ${post.User.createdAt}
@@ -82,10 +82,11 @@ document.addEventListener('click', event => {
         }
       })
       .then(res=> {
-        let notes = res.data.notes
-        notes.forEach(note=> {
-          document.getElementById('comments').innerHTML+=
-          `${note.body}
+        let comments = res.data.comments
+        document.getElementById(`comments ${postId}`).innerHTML = "";
+        comments.forEach(comment=> {
+          document.getElementById(`comments ${postId}`).innerHTML+=
+          `${comment.body}
           <br>`
         })
       })
