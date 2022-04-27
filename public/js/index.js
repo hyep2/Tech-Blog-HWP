@@ -95,25 +95,4 @@ document.addEventListener('click', event => {
 
 
 
-//creating and submitting new post
-document.getElementById('submit').addEventListener('click', event => {
-  event.preventDefault()
-  alert('might need to refresh page to see all the posts')
-  let newPost = {
-    title: document.getElementById('title').value,
-    content: document.getElementById('content').value
-  }
-
-  //headers part is to make sure it knows it's authenticated
-  axios.post('/api/posts', newPost, {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('badge')}`
-    }
-  }
-  )
-    .then(res => {
-      console.log(res.data)
-    })
-})
-
 

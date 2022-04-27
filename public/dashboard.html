@@ -5,10 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Tech Blog</title>
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -17,12 +20,14 @@
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="./dashboard.html">Dashboard</a>
+        <a class="nav-link" href="./dashboard.html">Dashboard</a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" href="./login.html">Login</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="./login.html" id="logout">Logout</a>
       </li>
@@ -32,46 +37,40 @@
 
 
   <header class="hero">
-    <h1 class="app-title"><a href="/dashboard">Your Dashboard</a></h1>
+    <h1 class="app-title"><a href="/">Dashboard</a></h1>
   </header>
 
-  <main class="col-auto" id="posts"> 
-    
-  </main>
+  <h6>To create a post, fill in the form below. After you submit it, the post will appear in the home page.</h6>
+  <div class="col-auto">
+    <form class="form-floating">
+      <input class="form-control" id="title">
+      <label for="floatingInputValue">Title</label>
+    </form>
+    <form class="form-floating">
+      <input class="form-control" id="content">
+      <label for="floatingInputValue">Content</label>
+    </form>
 
-  <footer class="footer flex-row justify-center">
-    <a href="/dashboard/new">➕ New Post</a>
+    <br>
+    <button type="button" class="btn btn-info" id="submit">Add new post</button>
+    <br>
+    <br>
+
+    
+  </div>
+
+
+
+  <footer class="flex-row justify-center">
+    &copy; The Tech Blog Folks
   </footer>
 
-  <script>
-
-    //getting the posts and display them
-    axios.get('/api/posts', {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('badge')}`
-      }
-    })
-      .then(res => {
-        console.log(res.data) //array of objects
-        //want to put the posts on the page
-        let posts = res.data
-        posts.forEach(post => {
-          document.getElementById('posts').innerHTML +=
-            `
-      <h3> ${post.title} </h3>
-      <h4> ${post.content} </h4>
-      <hr>
-      `
-        })
-      })
-
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+  <script src="./js/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+
 </body>
-
-
 
 </html>
