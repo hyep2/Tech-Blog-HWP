@@ -21,9 +21,14 @@ axios.get('/api/posts', {
           <div class="card-body">
               <h5 class="card-title">${post.title}</h5>
               <p class="card-text">${post.content} </p>
-              <button class="post" data-post="${post.id}">See comments</button>
+              <hr>
+              <form class="form-floating">
+              <input class="form-control" id="${post.id}" >
+             <label for="floatingInputValue">Add Comment</label>
+              </form>
               <button class="addcomment" data-post="${post.id}">Add comments</button>
               <hr>
+              <button class="post" data-post="${post.id}">See comments</button>
               <div id='comments'></div>
           </div>
           <div class="card-footer text-muted">
@@ -38,6 +43,32 @@ axios.get('/api/posts', {
 
 
 //add comments for each post when u press button for 'add comments'
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('addcomment')) {
+    event.preventDefault()
+
+    let postId = event.target.dataset.post
+    console.log(postId)
+    console.log(document.getElementById(postId).value)
+    let newComment = {
+      body: document.getElementById(postId).value,
+      postId: postId
+    }
+    console.log(newComment)
+
+    axios.post('/api/comments', newComment, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('badge')}`
+      }
+    }
+    )
+      .then(res => {
+        console.log(res)
+      })
+    }
+})
+  
+  
 
 
 //displaying comments when u press button for 'see comments'

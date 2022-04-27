@@ -17,11 +17,7 @@ router.get('/comments', passport.authenticate('jwt'), async (req, res) => {
 //this autthenticate ensures that when u make a post, we want to authenticate that ur logged in and u do so by looking at local storage where the badge is stored
 router.post('/comments', passport.authenticate('jwt'), async (req, res) => {
   try {
-    const newComment = await Comment.create(
-      {
-        ...req.body,
-        postId: req.post.id
-      });
+    const newComment = await Comment.create(req.body)
     res.json(newComment);
   } catch (err) {
     res.json(err);
