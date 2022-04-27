@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <ul class="nav">
@@ -22,11 +22,11 @@
       <li class="nav-item">
         <a class="nav-link active" href="./dashboard.html">Dashboard</a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="./login.html" id="logout">Logout</a>
       </li>
-  
+
     </ul>
   </nav>
 
@@ -35,16 +35,40 @@
     <h1 class="app-title"><a href="/dashboard">Your Dashboard</a></h1>
   </header>
 
-  <main class="col-auto">
-    {{{body}}}
+  <main class="col-auto" id="posts"> 
+    
   </main>
 
   <footer class="footer flex-row justify-center">
     <a href="/dashboard/new">➕ New Post</a>
   </footer>
 
+  <script>
+
+    //getting the posts and display them
+    axios.get('/api/posts', {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('badge')}`
+      }
+    })
+      .then(res => {
+        console.log(res.data) //array of objects
+        //want to put the posts on the page
+        let posts = res.data
+        posts.forEach(post => {
+          document.getElementById('posts').innerHTML +=
+            `
+      <h3> ${post.title} </h3>
+      <h4> ${post.content} </h4>
+      <hr>
+      `
+        })
+      })
+
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
 </body>
 

@@ -1,11 +1,14 @@
 require("dotenv").config
 
+const axios = require('axios')
+
 const express = require("express")
 const passport = require("passport")
 const { join } = require("path");
 const {User} = require("./models")
 const {Strategy: JWTStrategy, ExtractJwt} = require('passport-jwt')
 const app = express();
+
 
 //MIDDLEWARE (should always be there in server.js)
 app.use(express.static(join(__dirname, "public")))
@@ -29,7 +32,7 @@ passport.use(new JWTStrategy({
 app.use(require("./routes"))
 
 async function init() {
-  await require("./config/config.js").sync()
+  await require("./config/config.js").sync({force:true})
   app.listen(process.env.PORT || 3001)
 }
 
