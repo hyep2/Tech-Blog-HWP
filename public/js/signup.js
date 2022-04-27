@@ -10,6 +10,6 @@ document.getElementById('signup-btn').addEventListener('click', event => {
   axios.post('/user/register', newUser)
   .then(res=> {
     console.log(res)
-    alert('New account has been made')
+    alert('New account has been made. Login to be directed to the home page')
   })
 })

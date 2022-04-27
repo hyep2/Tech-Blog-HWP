@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Post, User } = require('../models')
+const { Post, User, Comment } = require('../models')
 const passport = require('passport')
 
 //GET ALL POSTS
@@ -10,6 +10,16 @@ router.get('/posts', passport.authenticate('jwt'), async(req,res)=> {
     res.json(posts)
   } catch (error) {
     res.json({error})
+  }
+})
+
+//GET ONE POST BY ID
+router.get('/posts/:id', passport.authenticate('jwt'), async (req, res) => {
+  try {
+    let post = await Post.findOne({where:{id: req.params.id}, include: [User,Comment] })
+    res.json(post)
+  } catch (error) {
+    res.json({ error })
   }
 })
 
