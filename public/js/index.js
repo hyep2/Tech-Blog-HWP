@@ -15,8 +15,8 @@ axios.get('/api/posts')
             Post by ${post.User.username}
           </div>
           <div class="card-body">
-              <h5 class="card-title">${post.title}</h5>
-              <p class="card-text">${post.content} </p>
+              <h5 class="card-title">Topic: ${post.title}</h5>
+              <p class="card-text"> ${post.content} </p>
               <hr>
               <form class="form-floating">
               <input class="form-control" id="${post.id}" >
@@ -82,8 +82,11 @@ document.addEventListener('click', event => {
         document.getElementById(`comments ${postId}`).innerHTML = "";
         comments.forEach(comment=> {
           document.getElementById(`comments ${postId}`).innerHTML+=
-          `${comment.body}
-          <br>`
+          `${comment.body} 
+          <br>
+          <p id=commentTime>(posted at: ${comment.createdAt})</p>
+          
+          <hr>`
         })
       })
   }})
