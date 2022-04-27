@@ -48,10 +48,10 @@ You can find more of my other projects at [hyep2]. (https://github.com/hyep2).
 
 ## Display of project
 Login Page:
-[alt text](./assets/login.png)
+[loginpage](./assets/login.png)
 
 Home/Landing Page:
-[alt text](./assets/home.png)
+[homepage](./assets/home.png)
 
 Dashboard Page:
-[alt text](./assets/dashboard.png)
+[dashboardpage](./assets/dashboard.png)
