@@ -23,6 +23,7 @@
   "homepage": "https://github.com/hyep2/Tech-Blog-HWP#readme",
   "dependencies": {
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "express-session": "^1.17.2",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
