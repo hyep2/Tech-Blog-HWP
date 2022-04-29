@@ -31,17 +31,9 @@ passport.use(new JWTStrategy({
 
 app.use(require("./routes"))
 
-// async function init() {
-//   await require("./config/config.js").sync()
-//   app.listen(process.env.PORT || 3001)
-// }
+async function init() {
+  await require("./config/config.js").sync()
+  app.listen(process.env.PORT || 3001)
+}
 
-// init();
-
-const sequelize = require('./config/config');
-
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-  sequelize.sync({ force: false });
-});
+init();
