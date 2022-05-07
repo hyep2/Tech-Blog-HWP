@@ -31,9 +31,12 @@ passport.use(new JWTStrategy({
 
 app.use(require("./routes"))
 
+
+const PORT = process.env.PORT || 3001;
+
 async function init() {
   await require("./config/config.js").sync()
-  app.listen(process.env.PORT || 3001)
+  app.listen(PORT)
 }
 
 init();
